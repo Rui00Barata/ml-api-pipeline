@@ -1,0 +1,14 @@
+version: '3'
+
+tasks:
+  deploy-k8s:
+    desc: "Deploy application to Kubernetes"
+    cmds:
+      - kubectl apply -f k8s/deployment.yml
+      - kubectl apply -f k8s/service.yml
+
+  delete-k8s:
+    desc: "Delete application from Kubernetes"
+    cmds:
+      - kubectl delete -f k8s/deployment.yml --ignore-not-found=true
+      - kubectl delete -f k8s/service.yml --ignore-not-found=true

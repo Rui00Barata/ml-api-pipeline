@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-api-pipeline
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ml-api-pipeline
+  template:
+    metadata:
+      labels:
+        app: ml-api-pipeline
+    spec:
+      containers:
+      - name: ml-api-pipeline
+        image: rui00barata/ml-api-pipeline:latest
+        ports:
+        - containerPort: 8000
