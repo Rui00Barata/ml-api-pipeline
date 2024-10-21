@@ -6,9 +6,11 @@ import shutil
 app = FastAPI()
 detector = ObjectDetector()
 
+
 @app.get("/")
 async def root():
     return {"message": "Welcome to the ML API Pipeline"}
+
 
 @app.post("/detect/")
 async def detect(file: UploadFile = File(...)):
@@ -17,7 +19,4 @@ async def detect(file: UploadFile = File(...)):
 
     # annotated_image_path = detector.detect_objects(f"/tmp/temp_{file.filename}")
     annotated_image_path = detector.detect_objects(f"temp_{file.filename}")
-    if annotated_image_path:
-        return FileResponse(annotated_image_path)
-    else:
-        raise HTTPException(status_code=404, detail="No person detected in the image.")
+    return FileResponse(annotated_image_path)

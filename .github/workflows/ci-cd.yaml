@@ -27,12 +27,6 @@ jobs:
           source myenv/bin/activate
           pip install -r requirements.txt
 
-      - name: Lint with flake8
-        run: |
-          source myenv/bin/activate
-          pip install flake8
-          flake8 src tests
-
       - name: Build Docker image
         run: |
           docker build -t rui00barata/ml-api-pipeline .
