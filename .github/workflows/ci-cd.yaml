@@ -24,12 +24,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m venv myenv
-          source venv/bin/activate
+          source myenv/bin/activate
           pip install -r requirements.txt
 
       - name: Lint with flake8
         run: |
-          source venv/bin/activate
+          source myenv/bin/activate
           pip install flake8
           flake8 src tests
 
