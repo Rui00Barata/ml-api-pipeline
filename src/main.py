@@ -1,6 +1,6 @@
 import os
 import cv2
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import FileResponse
 from src.detector import ObjectDetector
 import shutil
