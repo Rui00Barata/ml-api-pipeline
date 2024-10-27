@@ -5,4 +5,3 @@ torchvision
 opencv-python-headless
 pydantic
 ultralytics
-python-multipart

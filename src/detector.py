@@ -18,7 +18,7 @@ class ObjectDetector:
                     image, (x1, y1), (x2, y2), (255, 0, 0), 2
                 )  # Draw rectangle
 
-        annotated_image_path = f"annotated_{image_path}"
+        annotated_image_path = image_path.replace("uploads", "annotated")
         cv2.imwrite(annotated_image_path, image)
         return annotated_image_path
 
