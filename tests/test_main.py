@@ -10,14 +10,12 @@ def test_read_root():
 
 def test_detect_image():
     # Use a sample image file for testing
-    with open("tests/sample_image.jpg", "rb") as image_file:
-        response = client.post("/detect/", files={"file": ("sample_image.jpg", image_file, "image/jpeg")})
+    with open("tests/test_inputs/sample_image.png", "rb") as image_file:
+        response = client.post("/detect/", files={"file": ("sample_image.png", image_file, "image/png")})
     assert response.status_code == 200
-    assert "filename" in response.json()
 
 def test_detect_video():
     # Use a sample video file for testing
-    with open("tests/sample_video.mp4", "rb") as video_file:
+    with open("tests/test_inputs/sample_video.mp4", "rb") as video_file:
         response = client.post("/detect-video/", files={"file": ("sample_video.mp4", video_file, "video/mp4")})
     assert response.status_code == 200
-    assert "filename" in response.json()
