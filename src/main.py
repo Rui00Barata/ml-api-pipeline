@@ -1,5 +1,4 @@
 import os
-import subprocess
 import cv2
 import shutil
 import uuid
@@ -82,13 +81,6 @@ async def detect_video(background_tasks: BackgroundTasks, file: UploadFile = Fil
     for frame in frames:
         out.write(frame)
     out.release()
-    
-    subprocess.run([
-        'ffmpeg', '-i', out_video_path,
-        '-vcodec', 'libx264', '-acodec', 'aac', '-movflags', '+faststart',
-        '-strict', 'experimental', out_video_path2,
-        '-y'  # Overwrite output file if it exists
-    ])
 
     background_tasks.add_task(cleanup_file, file_path)
     background_tasks.add_task(cleanup_file, out_video_path)
