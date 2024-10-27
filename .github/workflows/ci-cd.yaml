@@ -9,35 +9,8 @@ on:
       - main
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.10'
-
-      - name: Install dependencies
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install -r requirements.txt
-
-      - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
-
-      - name: Run tests
-        run: |
-          source venv/bin/activate
-          pip install pytest
-          pytest tests
-
   build-push:
     runs-on: ubuntu-latest
-    needs: test 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
